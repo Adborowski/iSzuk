@@ -20,6 +20,7 @@ const SoundPlayerList = ({ soundIds, type, albumId }) => {
     <View>
       <FlatList
         style={{ marginVertical: 12 }}
+        numColumns={1}
         data={data}
         renderItem={(soundData) => {
           return <SoundPlayer soundData={soundData.item} />;

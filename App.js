@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import MusicScreen from "./screens/MusicScreen";
 import { handleFonts } from "./libs/fonts";
@@ -10,6 +10,7 @@ import {
 } from "@react-navigation/bottom-tabs";
 import FavoritesContextProvider from "./store/context/favorites-context";
 import FavoritesScreen from "./screens/FavoritesScreen";
+import ChatScreen from "./screens/ChatScreen";
 import { customColors } from "./libs/colors";
 import PlayerContextProvider from "./store/context/player-context";
 import SoundPlayerBar from "./components/SoundPlayerBar";
@@ -18,7 +19,6 @@ const BottomTab = createBottomTabNavigator();
 export default function App() {
   // https://reactnavigation.org/docs/drawer-navigator/
   handleFonts();
-
   const iconSize = 18;
 
   return (
@@ -26,12 +26,13 @@ export default function App() {
       <FavoritesContextProvider>
         <NavigationContainer>
           <BottomTab.Navigator
+            initialRouteName={"SamplesScreen"}
             tabBar={(props) => {
               return (
-                <>
+                <View>
                   <SoundPlayerBar />
                   <BottomTabBar {...props} />
-                </>
+                </View>
               );
             }}
             screenOptions={(props) => {
@@ -91,6 +92,22 @@ export default function App() {
                 tabBarIcon: ({ color, size }) => {
                   return (
                     <Ionicons size={iconSize} color={color} name="heart" />
+                  );
+                },
+              }}
+            />
+            <BottomTab.Screen
+              name={"ChatScreen"}
+              component={ChatScreen}
+              options={{
+                title: "Czat",
+                tabBarIcon: ({ color, size }) => {
+                  return (
+                    <Ionicons
+                      size={iconSize}
+                      color={color}
+                      name="chatbubble-ellipses"
+                    />
                   );
                 },
               }}
