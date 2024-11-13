@@ -5,14 +5,15 @@ import {
   StyleSheet,
   PlatformColor,
   Pressable,
-  KeyboardAvoidingView,
-  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import { customColors } from "../libs/colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
+import { ChatContext } from "../store/context/chat-context";
 
 const ChatWriter = () => {
+  const { messages, addMessage } = useContext(ChatContext);
   const [inputValues, setInputValues] = useState({
     name: "",
     message: "",
@@ -30,9 +31,11 @@ const ChatWriter = () => {
     });
   };
 
-  useEffect(() => {
-    console.log(inputValues);
-  }, [inputValues]);
+  const handleSubmit = () => {
+    addMessage(inputValues);
+    setInputValues({ name: inputValues.name, message: "" });
+    Keyboard.dismiss();
+  };
 
   return (
     <View style={styles.container}>
@@ -55,7 +58,7 @@ const ChatWriter = () => {
         />
       </View>
 
-      <Pressable style={styles.btnSubmit}>
+      <Pressable style={styles.btnSubmit} onPress={handleSubmit}>
         <Text style={{ padding: 12 }}>
           <Ionicons size={32} name={"send"} />
         </Text>
@@ -71,6 +74,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flexDirection: "row",
     gap: 12,
+    backgroundColor: "white",
+    shadowColor: PlatformColor("systemGray4"),
+    shadowOffset: { width: 0, height: 14 },
+    shadowOpacity: 1,
+    shadowRadius: 10,
   },
   label: {
     margin: 0,
@@ -78,7 +86,7 @@ const styles = StyleSheet.create({
     fontFamily: "Basteleur-Moonlight",
   },
   textInput: {
-    backgroundColor: PlatformColor("systemGray5"),
+    backgroundColor: PlatformColor("systemGray6"),
     padding: 6,
     borderRadius: 6,
     alignContent: "center",
