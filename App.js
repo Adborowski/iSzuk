@@ -1,7 +1,5 @@
-import { StyleSheet, Text, PlatformColor, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import WelcomeScreen from "./screens/WelcomeScreen";
 import MusicScreen from "./screens/MusicScreen";
 import { handleFonts } from "./libs/fonts";
 import SamplesScreen from "./screens/SamplesScreen";
@@ -14,6 +12,7 @@ import FavoritesContextProvider from "./store/context/favorites-context";
 import FavoritesScreen from "./screens/FavoritesScreen";
 import { customColors } from "./libs/colors";
 import PlayerContextProvider from "./store/context/player-context";
+import SoundPlayerBar from "./components/SoundPlayerBar";
 const BottomTab = createBottomTabNavigator();
 
 export default function App() {
@@ -30,7 +29,7 @@ export default function App() {
             tabBar={(props) => {
               return (
                 <>
-                  <Text>Hey</Text>
+                  <SoundPlayerBar />
                   <BottomTabBar {...props} />
                 </>
               );

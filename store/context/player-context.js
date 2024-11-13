@@ -13,6 +13,7 @@ function PlayerContextProvider({ children }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [sound, setSound] = useState(null);
   const [soundId, setSoundId] = useState(null);
+  const [completion, setCompletion] = useState(0);
 
   useEffect(() => {
     return sound
@@ -28,21 +29,30 @@ function PlayerContextProvider({ children }) {
     const { sound } = await Audio.Sound.createAsync(soundData.sound);
 
     console.log("Playing:", soundData.label);
-    await sound.playAsync();
     setSound(sound);
+    await sound.playAsync();
 
     sound.setOnPlaybackStatusUpdate((status) => {
+      let completion = 0;
+
+      if (status.positionMillis && status.playableDurationMillis) {
+        completion = status.positionMillis / status.playableDurationMillis;
+        completion = Math.round(completion * 100) / 100;
+      }
+      setCompletion(completion ?? 0);
       setIsPlaying(status.isPlaying);
     });
   }
 
-  const stopSound = () => {
+  async function stopSound() {
+    await sound.stopAsync();
     setIsPlaying(false);
-  };
+  }
 
   const value = {
     sound: sound,
     soundId: soundId,
+    completion: completion,
     isPlaying: isPlaying,
     playSound: playSound,
     stopSound: stopSound,

@@ -12,10 +12,6 @@ const FavoritesContextProvider = ({ children }) => {
   const [favoriteIds, setFavoriteIds] = useState([]);
   // the actual implementations of keys
 
-  useEffect(() => {
-    console.log("favIds:", favoriteIds);
-  }, [favoriteIds]);
-
   const addFavorite = (id) => {
     setFavoriteIds((prev) => {
       if (!prev.includes(id)) {
