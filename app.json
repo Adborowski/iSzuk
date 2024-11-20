@@ -1,6 +1,7 @@
 {
   "expo": {
-    "name": "tiszuk-app",
+    "newArchEnabled": true,
+    "name": "iSzuk",
     "slug": "tiszuk-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,19 +14,42 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "tiszuk-app-bundle"
+      "buildNumber": "1.0.0",
+      "bundleIdentifier": "tiszuk-app-bundle",
+      "deploymentTarget": "15.1"
     },
     "android": {
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.tiszukappbundle"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-font"
-    ]
-  }
+      "expo-font",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 31,
+            "targetSdkVersion": 31,
+            "buildToolsVersion": "31.0.0"
+          },
+          "ios": {
+            "deploymentTarget": "15.1"
+          }
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "ab97601f-1b35-45ce-af47-a83626d7e931"
+      }
+    }
+  },
+  "notes": "asd"
 }

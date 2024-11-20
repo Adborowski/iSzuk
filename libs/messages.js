@@ -23,4 +23,20 @@ export const dummyMessages = [
     name: "Dummy",
     message: "Howdy there, partner.",
   },
+  {
+    name: "Dummy",
+    message: "Stop the cart.",
+  },
+  {
+    name: "Dummy",
+    message: "Rigmarole.",
+  },
+  {
+    name: "Dummy",
+    message: "How much longer can you last?.",
+  },
+  {
+    name: "Dummy",
+    message: "It's been quite a long two days.",
+  },
 ];

@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     gap: 12,
+    backgroundColor: customColors.green,
   },
   text: {
     maxHeight: 20,
