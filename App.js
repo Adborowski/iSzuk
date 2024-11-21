@@ -42,7 +42,7 @@ export default function App() {
           <FavoritesContextProvider>
             <NavigationContainer>
               <BottomTab.Navigator
-                initialRouteName={"SamplesScreen"}
+                initialRouteName={"MusicScreen"}
                 tabBar={(props) => {
                   return (
                     <View>
@@ -100,7 +100,7 @@ export default function App() {
                     title: "Sample",
                   }}
                 />
-                <BottomTab.Screen
+                {/* <BottomTab.Screen
                   name={"FavoriteScreen"}
                   component={FavoritesScreen}
                   options={{
@@ -111,8 +111,8 @@ export default function App() {
                       );
                     },
                   }}
-                />
-                <BottomTab.Screen
+                /> */}
+                {/* <BottomTab.Screen
                   name={"ChatScreen"}
                   component={ChatScreen}
                   options={{
@@ -127,7 +127,7 @@ export default function App() {
                       );
                     },
                   }}
-                />
+                /> */}
               </BottomTab.Navigator>
             </NavigationContainer>
           </FavoritesContextProvider>

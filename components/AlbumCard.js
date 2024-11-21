@@ -1,14 +1,13 @@
 import { Image, Text, View, StyleSheet } from "react-native";
 import { albums } from "../libs/sounds";
 
-const AlbumCard = ({ albumId }) => {
+const AlbumCard = ({ albumId, style }) => {
   const album = albums.filter((album) => album.id === albumId)[0];
+  console.log(album);
   if (album) {
     return (
-      <View>
-        <View style={styles.coverWrapper}>
-          <Image style={styles.albumCover} source={album.imageUrl} />
-        </View>
+      <View style={{ ...style }}>
+        <Image style={styles.albumCover} source={album.imageUrl} />
       </View>
     );
   }
@@ -21,14 +20,11 @@ const AlbumCard = ({ albumId }) => {
 };
 
 const styles = StyleSheet.create({
-  coverWrapper: {
-    justifyContent: "center",
-    flexDirection: "row",
-    marginTop: 16,
-  },
   albumCover: {
-    width: 366,
-    height: 366,
+    width: 200,
+    height: 200,
+    margin: "auto",
+    marginTop: 12,
   },
 });
 

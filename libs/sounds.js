@@ -1,10 +1,59 @@
 const allSounds = [
   {
-    id: "x1",
+    id: "k1",
     type: "music",
     albumId: "120koni",
-    label: "Evil Szwedzka",
-    sound: require("../assets/sounds/song-1.mp3"),
+    label: "Żaba Wierzy",
+    sound: require("../assets/songs/1-zaba.mp3"),
+  },
+  {
+    id: "k2",
+    type: "music",
+    albumId: "120koni",
+    label: "120 Koni",
+    sound: require("../assets/songs/2-konie.mp3"),
+  },
+  {
+    id: "k3",
+    type: "music",
+    albumId: "120koni",
+    label: "Srakulinka",
+    sound: require("../assets/songs/3-srakulinka.mp3"),
+  },
+  {
+    id: "k4",
+    type: "music",
+    albumId: "120koni",
+    label: "Piekło",
+    sound: require("../assets/songs/4-koty.mp3"),
+  },
+  {
+    id: "k5",
+    type: "music",
+    albumId: "120koni",
+    label: "Łączna",
+    sound: require("../assets/songs/5-laczna.mp3"),
+  },
+  {
+    id: "k6",
+    type: "music",
+    albumId: "120koni",
+    label: "Ktoś Podpalił",
+    sound: require("../assets/songs/6-kto.mp3"),
+  },
+  {
+    id: "k7",
+    type: "music",
+    albumId: "120koni",
+    label: "Farba",
+    sound: require("../assets/songs/7-farba.mp3"),
+  },
+  {
+    id: "k8",
+    type: "music",
+    albumId: "120koni",
+    label: "Wybór",
+    sound: require("../assets/songs/8-wybor.mp3"),
   },
   {
     id: "s1",
@@ -148,21 +197,21 @@ const allSounds = [
 
 export let sounds = allSounds;
 
-export let samples = allSounds.filter((sound) => sound.type === "sample");
-
-const isSorted = true; // set false for dev; alphabetical order
-if (isSorted) {
-  sounds = allSounds.sort((a, b) => {
+export let samples = allSounds
+  .filter((sound) => sound.type === "sample")
+  .sort((a, b) => {
     let textA = a.label;
     let textB = b.label;
     return textA < textB ? -1 : textA > textB ? 1 : 0;
   });
-}
+export let songs = allSounds.filter((sound) => sound.type === "music");
 
 export const albums = [
   {
     id: "120koni",
     title: "120 Koni",
+    artist: "Boćki",
+    artists: ["b24", "Fmaj", "radicchio", "krzyś"],
     imageUrl: require("../assets/120koni.jpg"),
   },
 ];

@@ -1,12 +1,16 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import AlbumCard from "../components/AlbumCard";
 import SoundPlayerList from "../components/SoundPlayerList";
 
 const MusicScreen = () => {
   return (
-    <View>
-      <AlbumCard albumId={"120koni"} />
-      <SoundPlayerList albumId={"120koni"} />
+    <View style={{ flex: 1 }}>
+      <View>
+        <AlbumCard albumId={"120koni"} />
+      </View>
+      <View style={{ flex: 2 }}>
+        <SoundPlayerList albumId={"120koni"} />
+      </View>
     </View>
   );
 };
